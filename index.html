@@ -18,17 +18,10 @@
             ☁️ 雲朵辨識系統
         </h1>
         
-        <div id="game-box" class="min-h-[160px] flex flex-col justify-center items-center mb-6">
+        <div id="game-box" class="min-h-[160px] flex flex-col justify-center items-center">
             <button id="start-btn" onclick="startGame()" class="bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold px-8 py-4 rounded-full shadow-md hover:shadow-lg transition-all cursor-pointer transform hover:scale-105">
                 開始辨識雲
             </button>
-        </div>
-
-        <hr class="border-slate-100 my-4">
-
-        <div class="flex items-center justify-center gap-2 text-sm text-slate-400">
-            <span>📊 累積瀏覽人次：</span>
-            <div id="hits-container"></div>
         </div>
     </div>
 
@@ -46,7 +39,7 @@
             q9: { text: "是否每個雲塊小於伸出手後一根手指的寬度？", type: "question", yes: "r_cc", no: "q10" },
             q10: { text: "是否每個雲塊介於伸出手後一根手指到三根手指的寬度？", type: "question", yes: "r_ac", no: "r_sc" },
 
-            // 結果 (新增了 image 欄位，只有層積雲有配圖)
+            // 結果 (配圖檔名固定為 sc.jpg)
             r_cb: { text: "積雨雲 Cb", type: "result" },
             r_cu: { text: "積雲 Cu", type: "result" },
             r_cs: { text: "卷層雲 Cs", type: "result" },
@@ -100,16 +93,6 @@
                     </button>
                 `;
             }
-        }
-
-        // 自動獲取當前網站的網址，並動態產生計數器圖片
-        const currentUrl = encodeURIComponent(window.location.href);
-        const hitsContainer = document.getElementById('hits-container');
-        
-        if (window.location.protocol === 'file:') {
-            hitsContainer.innerHTML = `<span class="text-xs bg-slate-200 text-slate-600 px-2 py-0.5 rounded">本地端測試中 (上線後才顯示數字)</span>`;
-        } else {
-            hitsContainer.innerHTML = `<img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=${currentUrl}&count_bg=%233B82F6&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false" alt="瀏覽人數"/>`;
         }
     </script>
 </body>
